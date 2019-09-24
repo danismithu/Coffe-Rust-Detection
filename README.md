@@ -1,1 +1,1 @@
-# Coffe-Rust-Detection
+# Coffee-Rust-Detection
