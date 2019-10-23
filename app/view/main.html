@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block pageContent %}
+  <div>
+    <div class='center'>
+      <div class="logo">
+        <!-- Image card -->
+        <style>
+          .demo-card-image.mdl-card {
+            width: 60%;
+            height: auto;
+            background: center / cover #ffc107;
+          }
+        </style>
+
+        <div class="demo-card-image mdl-card mdl-shadow--2dp center">
+          <div class="mdl-card__title mdl-card--expand">
+            <img src="{{ url_for('static', filename='resources/logo.png') }}" alt="Logo">
+          </div>
+          <div class="mdl-card__supporting-text left">
+            <div class="description-text">
+              The tool you need to detect if your coffee plants have rust.
+              Pay $0.50 and submit the photo you want to analyze. A smart program, based on your images
+              will predict if it has pest by red spider mites, rust level 1, level 2, level 3 or level 4.
+            </div>
+
+            <form action="/analyze" method="post" class="form-button">
+              <script
+                src="https://checkout.stripe.com/checkout.js"
+                class="stripe-button"
+                data-key="{{ key }}"
+                data-description="Coffee Rust Detection payment"
+                data-amount="75"
+                data-locale="auto">
+              </script>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block scriptsContent %}
+  <script src='../static/main.js'></script>
+{% endblock %}
