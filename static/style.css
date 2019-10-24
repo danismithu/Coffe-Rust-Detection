@@ -1,0 +1,66 @@
+.no-display {
+  display: none;
+  margin-bottom: 2em;
+}
+
+.center {
+  margin: auto;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.logo {
+  margin-top: 1em;
+}
+
+.logo-login {
+  margin: 10px, 0px;
+}
+
+.title {
+  font-size: 30px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #262626;
+}
+
+.content {
+  margin-top: 10em;
+}
+
+.upload-label {
+  padding: 10px;
+  font-size: 12px;
+}
+
+.result-label {
+  margin-top: 0.5em;
+  padding: 10px;
+  font-size: 14px;
+}
+
+button.action-button {
+  width: 200px;
+  height: 40px;
+  border: solid 1px #5b3112;
+  border-radius: 2px;
+  background-color: #5b3112;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.description-text {
+  font-size: 14px;
+  color: #000000;
+  text-align: left;
+}
+
+.form-button {
+  margin-top: 2em;
+  align: center;
+}
