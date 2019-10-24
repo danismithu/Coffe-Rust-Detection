@@ -21,7 +21,7 @@ from werkzeug.exceptions import MethodNotAllowed
 
 import stripe
 import gunicorn
-import pillow
+import PIL
 
 
 app = Flask(__name__, template_folder='view')
