@@ -20,6 +20,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.exceptions import MethodNotAllowed
 
 import stripe
+import gunicorn
 
 
 app = Flask(__name__, template_folder='view')
@@ -57,56 +58,48 @@ model = tf.keras.Sequential(
 model.load_weights(model_name)
 
 print('Model loaded!')
-    
+
 def model_predict(img_path, model_loaded):
     img = image.load_img(img_path, target_size=(224, 224))
-    
+
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x, mode='caffe')
-    
+
     with graph.as_default():
         model_loaded._make_predict_function()
         set_session(sess)
         preds = model_loaded.predict(x)
-        
+
     return preds
-    
+
 
 @app.route('/', methods=['GET'])
 def main():
    return(render_template('main.html', key=stripe_keys['publishable_key']))
-   
-    
-#@app.route('/signup', methods=['GET', 'POST'])
-#def signup():
-#    if request.method == 'POST':
-#        return redirect(url_for('main'))
-#    
-#    return(render_template('signup.html', key=stripe_keys['publishable_key']))
 
 
 @app.route('/analyze', methods=['GET', 'POST'])
 def analyze():
     if request.method == 'GET':
         return render_template('error.html')
-        
+
     try:
         amount = 75
         customer = stripe.Customer.create(
                 email=request.form['stripeEmail'],
                 source=request.form['stripeToken']
             )
-        
+
         stripe.Charge.create(
                 customer=customer.id,
                 amount=amount,
                 currency='usd',
                 description='Coffee Rust membership'
             )
-        
+
         return render_template('analyze.html')
-    
+
     except stripe.error.StripeError as e:
         print('Stripe error: ' + str(e))
         return render_template('error.html')
@@ -122,14 +115,14 @@ def predict():
         basepath = os.path.dirname(__file__)
         file_path = os.path.join(basepath, 'uploads', secure_filename(f.filename))
         f.save(file_path)
-        
+
         preds = model_predict(file_path, model)
-        
+
         preds_class = preds.argmax()
-        
+
         result = classes[preds_class]
         return result
-    
+
     return None
 
 if __name__ == '__main__':

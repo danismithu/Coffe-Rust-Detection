@@ -1,5 +1,6 @@
 .no-display {
   display: none;
+  margin-bottom: 2em;
 }
 
 .center {
@@ -28,10 +29,6 @@
   margin-top: 10em;
 }
 
-.analyze {
-  margin-top: 5em;
-}
-
 .upload-label {
   padding: 10px;
   font-size: 12px;
@@ -41,16 +38,6 @@
   margin-top: 0.5em;
   padding: 10px;
   font-size: 14px;
-}
-
-button.choose-file-button {
-  width: 200px;
-  height: 40px;
-  border-radius: 2px;
-  background-color: #ffffff;
-  border: solid 1px #5b3112;
-  font-size: 14px;
-  color: #5b3112;
 }
 
 button.action-button {
