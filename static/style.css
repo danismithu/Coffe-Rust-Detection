@@ -64,3 +64,12 @@ button:focus {
   margin-top: 2em;
   align: center;
 }
+
+.error-text {
+  color: #ffffff;
+}
+
+.analyze-text {
+  font-size: 14px;
+  color: #000000;
+}

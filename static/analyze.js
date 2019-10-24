@@ -28,10 +28,8 @@ function predict() {
     async: true,
     success: function(data) {
       el("result-label").innerHTML = 'Prediction is: ' + data;
-      el("analyze-button").style.visibility = 'hidden';
-      el("upload-button").style.visibility = 'hidden';
-      el("analyze-button").disabled = false;
-      el("upload-button").disabled = false;
+      $("#upload-button").hide();
+      $("#analyze-button").hide();
     },
   });
 }
