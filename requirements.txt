@@ -3,6 +3,6 @@ stripe==2.37.2
 Flask==1.1.1
 Keras==2.2.5
 tensorflow==1.13.1
-Werkzeug==0.15.4
+Werkzeug==2.2.3
 gunicorn==19.9.0
 Pillow==6.2.1
